@@ -1,0 +1,44 @@
+@import url('./css/fonts.css');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    font-family: 'Peralta';
+    background: radial-gradient(circle, #1E50B4, #3B7DD8);
+    color: #FFFFFF;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 15vh;
+    text-shadow: 0 1.3vh 0.7vh rgba(0, 0, 0, 0.25);
+}
+
+.redText{
+    color: #F44336;
+}
+
+#playButton{
+    width: clamp(4.5rem, 7vw, 8rem);
+    height: auto;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%);
+}
