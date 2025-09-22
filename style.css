@@ -27,7 +27,7 @@ body{
     justify-content: center;
     align-items: center;
     font-size: clamp(4rem, 8vw, 8rem);
-    text-shadow: 0 1.3vh 0.7vh rgba(0, 0, 0, 0.25);
+    text-shadow: 0 1.3vh 0.5vh rgba(0, 0, 0, 0.25);
 }
 
 .redText{
@@ -35,10 +35,15 @@ body{
 }
 
 #playButton{
-    width: clamp(4.5rem, 7vw, 8rem);
+    width: clamp(5.5rem, 7vw, 8rem);
     height: auto;
     position: absolute;
     bottom: 10%;
     left: 50%;
     transform: translate(-50%);
+}
+
+img{
+    position: absolute;
+    width: clamp(1.5rem, 2.5vw, 3rem);
 }
