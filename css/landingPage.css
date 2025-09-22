@@ -1,0 +1,42 @@
+body{
+    font-family: 'Peralta';
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(4rem, 8vw, 8rem);
+    text-shadow: 0 1.3vh 0.5vh rgba(0, 0, 0, 0.25);
+}
+
+.redText{
+    color: #F44336;
+}
+
+a{
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    line-height: 0;
+}
+
+#playButton{
+    width: clamp(5.5rem, 7vw, 8rem);
+    height: auto;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+img{
+    position: absolute;
+    width: clamp(1.5rem, 2.5vw, 3rem);
+}
