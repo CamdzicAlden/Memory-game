@@ -3,15 +3,19 @@
 body{
     font-family: 'Roboto';
     font-size: clamp(1.1rem, 2vw, 1.5rem);
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 10% 80% 10%;
 }
 
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 0.7vw 0 0.7vw;
 }
 
-.timeText{
+.textContainer{
     width: auto;
     height: auto;
     display: flex;
@@ -20,7 +24,7 @@ header{
     gap: clamp(0.4rem, 0.7vw, 2rem);
 }
 
-.timeTextLabel{
+.textLabel{
     font-family: 'RobotoBold';
 }
 
@@ -42,4 +46,45 @@ header{
 .headerIcons img{
     width: clamp(2rem, 3vw, 3rem);
     height: auto;
+}
+
+main{
+    width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap: clamp(0.3rem, 0.5vw, 2rem);
+}
+
+.card{
+    width: clamp(5.5rem, 10vw, 20rem);
+    height: clamp(5.5rem, 10vw, 20rem);
+    background: linear-gradient(#74C0FC, #4098FF);
+    border-radius: clamp(1.3rem, 2vw, 10rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.1s ease-in-out, transform 0.07s linear;
+}
+
+.card img{
+    width: 5vw;
+    height: auto;
+}
+
+.card:hover{
+    cursor: pointer;
+    box-shadow: 0 0 0.3vh rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+}
+
+footer{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0.7vw;
 }
