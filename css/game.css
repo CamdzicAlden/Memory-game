@@ -77,13 +77,42 @@ main{
 .card{
     width: clamp(5.5rem, 10vw, 20rem);
     height: clamp(5.5rem, 10vw, 20rem);
-    background: linear-gradient(#74C0FC, #4098FF);
     border-radius: clamp(1.3rem, 2vw, 10rem);
+    transition: transform 0.1s linear;
+}
+
+.cardInner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s, box-shadow 0.1s ease-in-out;
+    transform-style: preserve-3d;
+    border-radius: inherit;
+    box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
+}
+
+.card.flipped .cardInner{
+    transform: rotateY(180deg);
+}
+
+.cardFront, .cardBack{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.1s ease-in-out, transform 0.1s linear;
+    border-radius: inherit;
+}
+
+.cardFront{
+  background: linear-gradient(#74C0FC, #4098FF);
+}
+
+.cardBack{
+  background: linear-gradient(#74C0FC, #4098FF);
+  transform: rotateY(180deg);
 }
 
 /*Style for questionmark icon*/
@@ -94,8 +123,11 @@ main{
 
 .card:hover{
     cursor: pointer;
-    box-shadow: 0 0 0.3vh rgba(0, 0, 0, 0.2);
     transform: scale(0.98);
+}
+
+.cardInner:hover{
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
 }
 
 /*Footer flex container*/
