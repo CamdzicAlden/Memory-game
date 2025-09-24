@@ -1,5 +1,4 @@
-@import url('./fonts.css');
-
+/*Making body a grid container*/
 body{
     font-family: 'Roboto';
     font-size: clamp(1.1rem, 2vw, 1.5rem);
@@ -8,13 +7,16 @@ body{
     grid-template-rows: 10% 80% 10%;
 }
 
+/*Header flex container*/
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0.7vw 0 0.7vw;
+    margin-left: clamp(0.5rem, 0.8vw, 1rem);
+    margin-right: clamp(0.5rem, 0.8vw, 1rem);
 }
 
+/*Text container used for every text on the page*/
 .textContainer{
     width: auto;
     height: auto;
@@ -24,11 +26,12 @@ header{
     gap: clamp(0.4rem, 0.7vw, 2rem);
 }
 
+/*Making labels look bold*/
 .textLabel{
     font-family: 'RobotoBold';
 }
 
-
+/*Container for header icons*/
 .headerIcons{
     display: flex;
     justify-content: center;
@@ -36,18 +39,28 @@ header{
     gap: clamp(2rem, 3vw, 4rem);
 }
 
-.headerIcons button{
+/*Making buttons and links invisible*/
+.headerIcons button, .headerIcons a{
     width: auto;
     height: auto;
     background-color: transparent;
     border: none;
+    line-height: 0;
 }
 
+/*Style for header icons images*/
 .headerIcons img{
     width: clamp(2rem, 3vw, 3rem);
     height: auto;
+    transition: transform 0.1s linear;
 }
 
+.headerIcons img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/*Main grid with cards*/
 main{
     width: auto;
     height: auto;
@@ -60,6 +73,7 @@ main{
     gap: clamp(0.3rem, 0.5vw, 2rem);
 }
 
+/*Style for memory cards*/
 .card{
     width: clamp(5.5rem, 10vw, 20rem);
     height: clamp(5.5rem, 10vw, 20rem);
@@ -69,11 +83,12 @@ main{
     justify-content: center;
     align-items: center;
     box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.1s ease-in-out, transform 0.07s linear;
+    transition: box-shadow 0.1s ease-in-out, transform 0.1s linear;
 }
 
+/*Style for questionmark icon*/
 .card img{
-    width: 5vw;
+    width: clamp(2rem, 4vw, 20rem);
     height: auto;
 }
 
@@ -83,8 +98,10 @@ main{
     transform: scale(0.98);
 }
 
+/*Footer flex container*/
 footer{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 0.7vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: clamp(0.5rem, 0.8vw, 1rem);
 }
