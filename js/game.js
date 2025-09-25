@@ -2,6 +2,7 @@
 const cards = document.querySelectorAll(".card");
 const time = document.getElementById("time");
 const moves = document.getElementById("moves");
+const flipSound = new Audio('../sound/Flip.mp3');
 
 //Array with 8 icon paths
 const cardBackImages = [
@@ -32,6 +33,7 @@ cards.forEach(card => {
        if(card === card1 || card.classList.contains("flipped")) return;
 
        if(!timer) timer = setInterval(updateTime, 1000);
+       flippingSound();
        card.classList.add("flipped");
        movesCounter++;
        displayMoves();
@@ -57,6 +59,7 @@ function checkMatch(){
     else{
       lockBoard = true;  //Prevent input temporary
       setTimeout(() => {
+        flippingSound();
         card1.classList.remove("flipped");  //Flip cards back after 1.5s
         card2.classList.remove("flipped");
         resetBoard();
@@ -136,4 +139,10 @@ function setCards(){
     const img = card.querySelector(".cardBack img");
     img.src = shuffledImages[index];
   })
+}
+
+//Playing flip sound
+function flippingSound(){
+  flipSound.currentTime = 0;
+  flipSound.play();
 }
