@@ -15,19 +15,13 @@ const cardBackImages = [
 
 const pairedImages = [...cardBackImages, ...cardBackImages];
 
-const shuffledImages = shuffle(pairedImages);
 
 let card1 = null, card2 = null;
 let lockBoard = false;
 let movesCounter = 0, minutes = 3, seconds = 0, timer = null;
 
 
-window.addEventListener('DOMContentLoaded', () => {
-    cards.forEach((card, index) => {
-        const img = card.querySelector(".cardBack img");
-        img.src = shuffledImages[index];
-    })
-})
+window.addEventListener('DOMContentLoaded', setCards());
 
 cards.forEach(card => {
     card.addEventListener('click', () => {
@@ -37,7 +31,7 @@ cards.forEach(card => {
        if(!timer) timer = setInterval(updateTime, 1000);
        card.classList.add("flipped");
        movesCounter++;
-       moves.textContent = movesCounter;
+       displayMoves();
 
        if(!card1) {
         card1 = card;
@@ -71,23 +65,49 @@ function resetBoard(){
     lockBoard = false;
 }
 
+function resetGame(){
+  clearInterval(timer);
+  timer = null;
+  minutes = 3;
+  seconds = 0;
+  movesCounter = 0;
+
+  displayTime();
+  displayMoves();
+  
+  cards.forEach((card) => {
+      card.classList.remove("flipped");
+  })
+    
+  setTimeout(setCards, 700);
+  resetBoard();
+}
+
 function updateTime(){
-    if(seconds > 0){
-        seconds--;
-    }else{
-        minutes--;
-        seconds = 59;
-    }
+  if(seconds > 0){
+    seconds--;
+  }else{
+    minutes--;
+    seconds = 59;
+  }
 
-    let displayMinutes = 
-    (minutes > 0)? ((minutes < 10)? "0" + minutes + ":" : minutes + ":") : "";
+  displayTime();
 
-    let displaySeconds = 
-    (seconds < 10) ? "0" + seconds : seconds;
+  if(minutes === 0 && seconds === 0) clearInterval(timer);
+}
 
-    time.textContent = displayMinutes + displaySeconds;
+function displayTime(){
+  let displayMinutes = 
+  (minutes > 0)? ((minutes < 10)? "0" + minutes + ":" : minutes + ":") : "";
 
-    if(minutes === 0 && seconds === 0) clearInterval(timer);
+  let displaySeconds = 
+  (seconds < 10) ? "0" + seconds : seconds;
+
+  time.textContent = displayMinutes + displaySeconds;
+}
+
+function displayMoves(){
+  moves.textContent = movesCounter;
 }
 
 
@@ -97,4 +117,13 @@ function shuffle(arr){
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
+}
+
+function setCards(){
+  const shuffledImages = shuffle(pairedImages);
+
+  cards.forEach((card, index) => {
+    const img = card.querySelector(".cardBack img");
+    img.src = shuffledImages[index];
+  })
 }
