@@ -1,10 +1,33 @@
 const cards = document.querySelectorAll(".card");
 const time = document.getElementById("time");
 const moves = document.getElementById("moves");
+
+const cardBackImages = [
+    "../icons/HeartIcon.svg",
+    "../icons/CircleIcon.svg",
+    "../icons/SquareIcon.svg",
+    "../icons/HexagonIcon.svg",
+    "../icons/StarIcon.svg",
+    "../icons/TriangleIcon.svg",
+    "../icons/SealIcon.svg",
+    "../icons/DiamondIcon.svg",
+];
+
+const pairedImages = [...cardBackImages, ...cardBackImages];
+
+const shuffledImages = shuffle(pairedImages);
+
 let card1 = null, card2 = null;
 let lockBoard = false;
 let movesCounter = 0, minutes = 3, seconds = 0, timer = null;
 
+
+window.addEventListener('DOMContentLoaded', () => {
+    cards.forEach((card, index) => {
+        const img = card.querySelector(".cardBack img");
+        img.src = shuffledImages[index];
+    })
+})
 
 cards.forEach(card => {
     card.addEventListener('click', () => {
@@ -67,3 +90,11 @@ function updateTime(){
     if(minutes === 0 && seconds === 0) clearInterval(timer);
 }
 
+
+function shuffle(arr){
+    for(let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i+1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
