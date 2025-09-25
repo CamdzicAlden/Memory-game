@@ -104,18 +104,14 @@ main{
     justify-content: center;
     align-items: center;
     border-radius: inherit;
-}
-
-.cardFront{
-  background: linear-gradient(#74C0FC, #4098FF);
+    background: linear-gradient(#74C0FC, #4098FF);
 }
 
 .cardBack{
-  background: linear-gradient(#74C0FC, #4098FF);
   transform: rotateY(180deg);
 }
 
-/*Style for questionmark icon*/
+/*Style for cards icons*/
 .card img{
     width: clamp(2rem, 4vw, 20rem);
     height: auto;
@@ -127,7 +123,7 @@ main{
 }
 
 .cardInner:hover{
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.2);
 }
 
 /*Footer flex container*/
