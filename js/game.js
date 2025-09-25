@@ -1,7 +1,9 @@
+//Variables declaration
 const cards = document.querySelectorAll(".card");
 const time = document.getElementById("time");
 const moves = document.getElementById("moves");
 
+//Array with 8 icon paths
 const cardBackImages = [
     "../icons/HeartIcon.svg",
     "../icons/CircleIcon.svg",
@@ -13,6 +15,7 @@ const cardBackImages = [
     "../icons/DiamondIcon.svg",
 ];
 
+//Making new array with pair of each icon
 const pairedImages = [...cardBackImages, ...cardBackImages];
 
 
@@ -20,7 +23,7 @@ let card1 = null, card2 = null;
 let lockBoard = false;
 let movesCounter = 0, minutes = 3, seconds = 0, timer = null;
 
-
+//Event listener for loading shuffled cards on page load
 window.addEventListener('DOMContentLoaded', setCards());
 
 cards.forEach(card => {
@@ -43,28 +46,31 @@ cards.forEach(card => {
     });
 });
 
+//Checking if two cards are matching
 function checkMatch(){
     const img1 = card1.querySelector(".cardBack img").src;
     const img2 = card2.querySelector(".cardBack img").src;
 
     if(img1 === img2){
-      resetBoard();
+      resetBoard();  //Leave them flipped if they are
     }
     else{
-      lockBoard = true;
+      lockBoard = true;  //Prevent input temporary
       setTimeout(() => {
-        card1.classList.remove("flipped");
+        card1.classList.remove("flipped");  //Flip cards back after 1.5s
         card2.classList.remove("flipped");
         resetBoard();
       }, 1500);
     }
 }
 
+//Reseting board values
 function resetBoard(){
     [card1, card2] = [null, null];
     lockBoard = false;
 }
 
+//Function for reseting game
 function resetGame(){
   clearInterval(timer);
   timer = null;
@@ -83,6 +89,7 @@ function resetGame(){
   resetBoard();
 }
 
+//Function for updating time every second
 function updateTime(){
   if(seconds > 0){
     seconds--;
@@ -96,6 +103,7 @@ function updateTime(){
   if(minutes === 0 && seconds === 0) clearInterval(timer);
 }
 
+//Displaying time formated
 function displayTime(){
   let displayMinutes = 
   (minutes > 0)? ((minutes < 10)? "0" + minutes + ":" : minutes + ":") : "";
@@ -106,11 +114,12 @@ function displayTime(){
   time.textContent = displayMinutes + displaySeconds;
 }
 
+//Displaying number of moves
 function displayMoves(){
   moves.textContent = movesCounter;
 }
 
-
+//Fisher-Yates algorithm for shuffling array randomly
 function shuffle(arr){
     for(let i = arr.length - 1; i > 0; i--){
         const j = Math.floor(Math.random() * (i+1));
@@ -119,6 +128,7 @@ function shuffle(arr){
     return arr;
 }
 
+//Method for setting random card background images
 function setCards(){
   const shuffledImages = shuffle(pairedImages);
 

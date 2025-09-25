@@ -73,7 +73,7 @@ main{
     gap: clamp(0.3rem, 0.5vw, 2rem);
 }
 
-/*Style for memory cards*/
+/*Style for memory card container*/
 .card{
     width: clamp(5.5rem, 10vw, 20rem);
     height: clamp(5.5rem, 10vw, 20rem);
@@ -81,6 +81,7 @@ main{
     transition: transform 0.1s linear;
 }
 
+/*Flipping part*/
 .cardInner{
     position: relative;
     width: 100%;
@@ -91,10 +92,13 @@ main{
     box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
 }
 
+/*Flip inner card if container has 
+flipped class*/
 .card.flipped .cardInner{
     transform: rotateY(180deg);
 }
 
+/*Style for back and front of card*/
 .cardFront, .cardBack{
     position: absolute;
     width: 100%;
@@ -107,6 +111,7 @@ main{
     background: linear-gradient(#74C0FC, #4098FF);
 }
 
+/*Flip cards back initially to hide it*/
 .cardBack{
   transform: rotateY(180deg);
 }
@@ -117,11 +122,13 @@ main{
     height: auto;
 }
 
+/*Style for container hovering*/
 .card:hover{
     cursor: pointer;
     transform: scale(0.98);
 }
 
+/*Style for inner card hovering*/
 .cardInner:hover{
   box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.2);
 }
