@@ -17,11 +17,6 @@ body{
   text-shadow: 0 1.3vh 0.5vh rgba(0, 0, 0, 0.25);
 }
 
- /*Red text paragraph*/
-.redText{
-  color: #F44336;
-}
-
 /*Style for links*/
 a{
   display: inline-block;
@@ -51,4 +46,5 @@ a{
 img{
     position: absolute;
     width: clamp(1.5rem, 2.5vw, 3rem);
+    animation: iconsScaling 1s infinite;
 }

@@ -1,5 +1,6 @@
 /*Importing font definitions file*/
 @import url('./css/fonts.css');
+@import url('./css/animations.css');
 
 *{
     box-sizing: border-box;
@@ -19,4 +20,8 @@ body{
     color: #FFFFFF;
 }
 
+ /*Red text paragraph*/
+.redText{
+  color: #F44336;
+}
 

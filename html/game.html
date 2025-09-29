@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/dialogWindow.css">
   </head>
   <body>
     <header>
@@ -18,7 +19,7 @@
       </div>
 
       <!-- Top right icons -->
-      <div class="headerIcons">
+      <div class="headerIcons"> 
         <button onclick="resetGame()">
           <img src="../icons/RestartIcon.svg" alt="R">
         </button>
@@ -49,7 +50,7 @@
             <img src="../icons/QuestionmarkIcon.svg" alt="?">
           </div>
           <div class="cardBack">
-            <img src="../icons/AlarmClockIcon.svg" alt="H">
+            <img src="../icons/HomeIcon.svg" alt="H">
           </div>
         </div>
       </div>
@@ -231,6 +232,24 @@
         <p id="moves">0</p>
       </div>
     </footer>
+
+    <div class="dialogWindow"></div>
+
+    <div class="won">
+        <div class="textMessage">
+          <p>YOU</p>
+          <p class="redText">WON!</p>
+        </div>
+        <button class="okButton" onclick="wonOK()">OK</button>
+    </div>
+
+    <div class="timesUp">
+      <div class="textMessage">
+          <p>TIME'S</p>
+          <p class="redText">UP!</p>
+      </div>
+      <button class="okButton" onclick="timesUpOK()">OK</button>
+    </div>
 
     <script src="../js/game.js"></script>
   </body>

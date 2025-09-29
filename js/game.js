@@ -2,7 +2,11 @@
 const cards = document.querySelectorAll(".card");
 const time = document.getElementById("time");
 const moves = document.getElementById("moves");
+const dialogWindow = document.querySelector(".dialogWindow");
+const won = document.querySelector(".won");
+const timesUp = document.querySelector(".timesUp");
 const flipSound = new Audio('../sound/Flip.mp3');
+
 
 //Array with 8 icon paths
 const cardBackImages = [
@@ -22,11 +26,12 @@ const pairedImages = [...cardBackImages, ...cardBackImages];
 
 let card1 = null, card2 = null;
 let lockBoard = false;
-let movesCounter = 0, minutes = 3, seconds = 0, timer = null;
+let movesCounter = 0, minutes = 2, seconds = 0, timer = null;
 
 //Event listener for loading shuffled cards on page load
 window.addEventListener('DOMContentLoaded', setCards());
 
+//Setting click event listener on every card
 cards.forEach(card => {
     card.addEventListener('click', () => {
        if(lockBoard) return;
@@ -55,6 +60,7 @@ function checkMatch(){
 
     if(img1 === img2){
       resetBoard();  //Leave them flipped if they are
+      setTimeout(checkWin, 700);
     }
     else{
       lockBoard = true;  //Prevent input temporary
@@ -77,7 +83,7 @@ function resetBoard(){
 function resetGame(){
   clearInterval(timer);
   timer = null;
-  minutes = 3;
+  minutes = 2;
   seconds = 0;
   movesCounter = 0;
 
@@ -96,14 +102,18 @@ function resetGame(){
 function updateTime(){
   if(seconds > 0){
     seconds--;
-  }else{
+  }else if(minutes > 0){
     minutes--;
     seconds = 59;
   }
 
   displayTime();
 
-  if(minutes === 0 && seconds === 0) clearInterval(timer);
+  //If time is up
+  if(minutes === 0 && seconds === 0) {
+    clearInterval(timer);
+    timesUpMessage();  //Show time's up popup
+  }
 }
 
 //Displaying time formated
@@ -145,4 +155,41 @@ function setCards(){
 function flippingSound(){
   flipSound.currentTime = 0;
   flipSound.play();
+}
+
+//Method for showing won dialog
+function wonMessage(){
+  dialogWindow.style.display = "block";
+  won.style.display = "block";
+}
+
+//Method for closing won dialog
+function wonOK(){
+  won.style.display = "none";
+  dialogWindow.style.display = "none";
+  resetGame();
+}
+
+//Method for showing time's up dialog
+function timesUpMessage(){
+  dialogWindow.style.display = "block";
+  timesUp.style.display = "flex";
+}
+
+//Method for closing time's up dialog
+function timesUpOK(){
+  timesUp.style.display = "none";
+  dialogWindow.style.display = "none";
+  resetGame();
+}
+
+//Method for checking if all cards are flipped
+function checkWin(){
+  //Check if they contain class flipped 
+  const allFlipped = [...cards].every(card => card.classList.contains("flipped"));
+
+  if(allFlipped){
+    clearInterval(timer);
+    wonMessage();  //Display popup
+  }
 }
