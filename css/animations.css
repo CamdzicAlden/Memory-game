@@ -1,8 +1,38 @@
-@keyframes iconsScaling{
+@keyframes scaling{
     0%, 100% {
         transform: scale(1);
     }
     50%{
+        transform: scale(1.2);
+    }
+}
+
+@keyframes time{
+    0%, 12.5%, 25%, 37.5%, 50%{
+        transform: rotate(0);
+    }
+    6.25%, 31.25%{
+        transform: rotate(15deg);
+    }
+    18.75%, 43.75%{
+        transform: rotate(-15deg);
+    }
+}
+
+@keyframes textScaling {
+    0%, 100%{
+        transform: scale(1);
+    }
+    50%{
         transform: scale(1.1);
+    }
+}
+
+@keyframes containerScaling {
+    0%{
+        transform: translate(-50%, -50%) scale(0.2);
+    }
+    50%{
+        transform: translate(-50%, -50%) scale(1);
     }
 }

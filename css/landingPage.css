@@ -40,11 +40,12 @@ a{
   position: relative;
   width: clamp(5.5rem, 7vw, 8rem);
   height: auto;
+  animation: none;
 }
 
 /*Other images*/
 img{
     position: absolute;
     width: clamp(1.5rem, 2.5vw, 3rem);
-    animation: iconsScaling 1s infinite;
+    animation: scaling 0.7s infinite linear;
 }
