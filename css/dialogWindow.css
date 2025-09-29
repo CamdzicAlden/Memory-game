@@ -28,6 +28,13 @@
     animation: containerScaling 0.5s linear;
 }
 
+.won img{
+    position: absolute;
+    width: clamp(1.5rem, 2vw, 3rem);
+    height: auto;
+    animation: scaling 0.7s infinite;
+}
+
 .imgContainer{
     width: clamp(1.5rem, 2vw, 3rem);
     height: auto;
@@ -67,13 +74,13 @@
     transform: translate(-50%);
     width: 8vw;
     height: auto;
-    font-family: 'Roboto';
+    font-family: 'RobotoBold';
     font-size: 2.5vh;
     color: #FFFFFF;
     background: linear-gradient(to top,#74C0FC, #3B7DD8);
     border: none;
     border-radius: 99999px;
-    line-height: 2;
+    line-height: 2.5;
     box-shadow: 0 0.4vh 0.5vh rgba(0, 0, 0, 0.25),
     0 -0.3vh 0.5vh rgba(0, 0, 0, 0.25);
 }

@@ -26,7 +26,7 @@ const pairedImages = [...cardBackImages, ...cardBackImages];
 
 let card1 = null, card2 = null;
 let lockBoard = false;
-let movesCounter = 0, minutes = 2, seconds = 0, timer = null;
+let movesCounter = 0, minutes = 1, seconds = 30, timer = null;
 
 //Event listener for loading shuffled cards on page load
 window.addEventListener('DOMContentLoaded', setCards());
@@ -160,7 +160,7 @@ function flippingSound(){
 //Method for showing won dialog
 function wonMessage(){
   dialogWindow.style.display = "block";
-  won.style.display = "block";
+  won.style.display = "flex";
 }
 
 //Method for closing won dialog
