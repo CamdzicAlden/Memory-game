@@ -83,8 +83,8 @@ function resetBoard(){
 function resetGame(){
   clearInterval(timer);
   timer = null;
-  minutes = 2;
-  seconds = 0;
+  minutes = 1;
+  seconds = 30;
   movesCounter = 0;
 
   displayTime();

@@ -14,7 +14,7 @@ body{
   justify-content: center;
   align-items: center;
   font-size: clamp(4rem, 8vw, 8rem);
-  text-shadow: 0 1.3vh 0.5vh rgba(0, 0, 0, 0.25);
+  text-shadow: 0 clamp(0.4rem, 0.9vw, 3rem) clamp(0.4rem, 0.5vw, 10rem) rgba(0, 0, 0, 0.25);
 }
 
 /*Style for links*/
@@ -48,4 +48,15 @@ img{
     position: absolute;
     width: clamp(1.5rem, 2.5vw, 3rem);
     animation: scaling 0.7s infinite linear;
+}
+
+@media screen and (max-width: 600px){
+  #movingIconLeft{
+    top: 25% !important;
+    left: 48% !important;
+  }
+
+  #movingIconRight{
+    display: none;
+  }
 }
