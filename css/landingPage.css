@@ -43,7 +43,7 @@ a{
   position: relative;
   width: clamp(5rem, 7vw, 8rem);
   height: auto;
-  animation: playBtnRotate 1.5s linear 5s infinite;
+  animation: playBtnRotate 1.5s linear 4s infinite;
 }
 
 #playButtonImg:hover{
