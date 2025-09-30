@@ -6,6 +6,9 @@ const dialogWindow = document.querySelector(".dialogWindow");
 const won = document.querySelector(".won");
 const timesUp = document.querySelector(".timesUp");
 const flipSound = new Audio('../sound/Flip.mp3');
+const failSound = new Audio('../sound/Fail.mp3');
+const tickSound = new Audio('../sound/Ticking.mp3');
+const winSound = new Audio('../sound/Won.mp3');
 
 
 //Array with 8 icon paths
@@ -109,10 +112,14 @@ function updateTime(){
 
   displayTime();
 
+  if(minutes === 0 && seconds === 5){
+    tickingSound();
+  }
   //If time is up
-  if(minutes === 0 && seconds === 0) {
+  else if(minutes === 0 && seconds === 0) {
     clearInterval(timer);
     timesUpMessage();  //Show time's up popup
+    failureSound();
   }
 }
 
@@ -157,6 +164,21 @@ function flippingSound(){
   flipSound.play();
 }
 
+function tickingSound(){
+  tickSound.currentTime = 0;
+  tickSound.play();
+}
+
+function failureSound(){
+  failSound.currentTime = 0;
+  failSound.play();
+}
+
+function wonSound(){
+  winSound.currentTime = 0;
+  winSound.play();
+}
+
 //Method for showing won dialog
 function wonMessage(){
   dialogWindow.style.display = "block";
@@ -191,5 +213,6 @@ function checkWin(){
   if(allFlipped){
     clearInterval(timer);
     wonMessage();  //Display popup
+    wonSound();
   }
 }
