@@ -9,12 +9,14 @@ body{
 
 /*Container for text in the middle*/
 .logoText{
+  opacity: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: clamp(4rem, 8vw, 8rem);
   text-shadow: 0 clamp(0.4rem, 0.9vw, 3rem) clamp(0.4rem, 0.5vw, 10rem) rgba(0, 0, 0, 0.25);
+  animation: logoAnimation 0.7s linear 0.5s 1 forwards;
 }
 
 /*Style for links*/
@@ -37,9 +39,14 @@ a{
 
 /*Play button image*/
 #playButtonImg{
+  display: block;
   position: relative;
-  width: clamp(5.5rem, 7vw, 8rem);
+  width: clamp(5rem, 7vw, 8rem);
   height: auto;
+  animation: playBtnRotate 1.5s linear 5s infinite;
+}
+
+#playButtonImg:hover{
   animation: none;
 }
 
