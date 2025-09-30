@@ -119,7 +119,7 @@ function updateTime(){
 //Displaying time formated
 function displayTime(){
   let displayMinutes = 
-  (minutes > 0)? ((minutes < 10)? "0" + minutes + ":" : minutes + ":") : "";
+  (minutes < 10)? ("0" + minutes + ":") : (minutes + ":");
 
   let displaySeconds = 
   (seconds < 10) ? "0" + seconds : seconds;
