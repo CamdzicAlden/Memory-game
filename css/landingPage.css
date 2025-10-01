@@ -57,6 +57,7 @@ img{
     animation: scaling 0.7s infinite linear;
 }
 
+/*Style for phone screen*/
 @media screen and (max-width: 600px){
   #movingIconLeft{
     top: 25% !important;

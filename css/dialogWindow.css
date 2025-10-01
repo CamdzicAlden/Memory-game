@@ -1,8 +1,7 @@
+/*Container covering whole screen to prevent clicks*/
 .dialogWindow{
-  background: radial-gradient(circle, #1E50B4, #3B7DD8);
+  background: inherit;
   position: absolute;
-  top: 0%;
-  left: 0%;
   width: 100vw;
   height: 100vh;
   opacity: 0.7;
@@ -11,9 +10,9 @@
   display: none;
 }
 
+/*Won/timesUp popup containers*/
 .won, .timesUp{
     position: absolute;
-    display: flex;
     justify-content: center;
     align-items: center;
     top: 50%;
@@ -24,32 +23,11 @@
     height: clamp(15rem, 27vw, 40rem);
     background: radial-gradient(circle, #74C0FC, #4098FF);
     border-radius: clamp(3rem, 6vw, 100rem);
-    display: none;
     animation: containerScaling 0.5s linear;
+    display: none;
 }
 
-.won img{
-    position: absolute;
-    width: clamp(1.5rem, 2vw, 4rem);
-    height: auto;
-    animation: scaling 0.7s infinite;
-}
-
-.imgContainer{
-    width: clamp(1.2rem, 2vw, 4rem);
-    height: clamp(1.2rem, 2vw, 4rem);
-    position: absolute;
-    line-height: 0;
-    animation: scaling 1.5s infinite;
-}
-
-.imgContainer img{
-    position: relative;
-    width: 100%;
-    height: auto;
-    animation: time 1.5s infinite;
-}
-
+/*Popups text message*/
 .textMessage{
     position: relative;
     display: flex;
@@ -60,14 +38,11 @@
     font-size: clamp(2rem, 4.5vw, 10rem);
 }
 
-.textMessage p{
-    display: block;
-}
-
 .redText{
     animation: textScaling 0.7s linear infinite;
 }
 
+/*Popup ok button*/
 .okButton{
     position: absolute;
     bottom: 7%;
@@ -84,6 +59,7 @@
     line-height: 2.5;
     box-shadow: 0 0.4vh 0.5vh rgba(0, 0, 0, 0.25),
     0 -0.3vh 0.5vh rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.1s linear;
 }
 
 .okButton:hover{
@@ -91,6 +67,24 @@
     cursor: pointer;
 }
 
+/*Won popup images*/
+.won img{
+    position: absolute;
+    width: clamp(1.2rem, 2vw, 4rem);
+    height: auto;
+    animation: scaling 0.7s infinite;
+}
+
+/*Time's up popup images*/
+.timesUp img{
+    width: clamp(1.2rem, 2vw, 4rem);
+    height: clamp(1.2rem, 2vw, 4rem);
+    position: absolute;
+    line-height: 0;
+    animation: time 1.5s infinite;
+}
+
+/*Style for phone screen*/
 @media screen and (max-width: 600px) {
     .okButton{
         line-height: 2;

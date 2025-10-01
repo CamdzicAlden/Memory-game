@@ -70,6 +70,7 @@ main{
     justify-content: center;
     align-items: center;
     align-self: center;
+    justify-self: center;
     gap: clamp(0.3rem, 0.5vw, 2rem);
 }
 
@@ -86,7 +87,7 @@ main{
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.7s, box-shadow 0.1s ease-in-out;
+    transition: transform 0.7s ease, box-shadow 0.1s ease-in-out;
     transform-style: preserve-3d;
     border-radius: inherit;
     box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);

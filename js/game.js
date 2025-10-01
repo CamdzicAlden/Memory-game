@@ -68,9 +68,9 @@ function checkMatch(){
     else{
       lockBoard = true;  //Prevent input temporary
       setTimeout(() => {
-        flippingSound();
         card1.classList.remove("flipped");  //Flip cards back after 1.5s
         card2.classList.remove("flipped");
+        flippingSound();
         resetBoard();
       }, 1500);
     }
@@ -112,6 +112,7 @@ function updateTime(){
 
   displayTime();
 
+  //If 5 seconds left
   if(minutes === 0 && seconds === 5){
     tickingSound();
   }
@@ -129,7 +130,7 @@ function displayTime(){
   (minutes < 10)? ("0" + minutes + ":") : (minutes + ":");
 
   let displaySeconds = 
-  (seconds < 10) ? "0" + seconds : seconds;
+  (seconds < 10) ? ("0" + seconds) : seconds;
 
   time.textContent = displayMinutes + displaySeconds;
 }
