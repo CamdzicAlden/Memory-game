@@ -134,9 +134,20 @@ flipped class*/
     transform: scale(0.98);
 }
 
+/*Remove hover effect if card is flipped*/
+.card.flipped:hover{
+    cursor: pointer;
+    transform: scale(1);
+}
+
 /*Style for inner card hovering*/
 .cardInner:hover{
   box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.2);
+}
+
+/*Remove hover effect if card is flipped*/
+.card.flipped .cardInner:hover{
+    box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
 }
 
 /*Footer flex container*/
