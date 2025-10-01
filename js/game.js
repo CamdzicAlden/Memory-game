@@ -89,6 +89,7 @@ function resetGame(){
   minutes = 1;
   seconds = 30;
   movesCounter = 0;
+  time.style.color = "#FFFFFF";
 
   displayTime();
   displayMoves();
@@ -114,6 +115,7 @@ function updateTime(){
 
   //If 5 seconds left
   if(minutes === 0 && seconds === 5){
+    time.style.color = "#F44336";
     tickingSound();
   }
   //If time is up
