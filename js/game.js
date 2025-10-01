@@ -171,11 +171,13 @@ function tickingSound(){
 }
 
 function failureSound(){
+  tickSound.pause();
   failSound.currentTime = 0;
   failSound.play();
 }
 
 function wonSound(){
+  tickSound.pause();
   winSound.currentTime = 0;
   winSound.play();
 }
