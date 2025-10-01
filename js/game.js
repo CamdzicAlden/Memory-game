@@ -13,14 +13,14 @@ const winSound = new Audio('../sound/Won.mp3');
 
 //Array with 8 icon paths
 const cardBackImages = [
-    "../icons/HeartIcon.svg",
-    "../icons/CircleIcon.svg",
-    "../icons/SquareIcon.svg",
-    "../icons/HexagonIcon.svg",
-    "../icons/StarIcon.svg",
-    "../icons/TriangleIcon.svg",
-    "../icons/SealIcon.svg",
-    "../icons/DiamondIcon.svg",
+    "../icons/AppleIcon.svg",
+    "../icons/PearIcon.svg",
+    "../icons/WatermelonIcon.svg",
+    "../icons/OrangeIcon.svg",
+    "../icons/StrawberryIcon.svg",
+    "../icons/PineappleIcon.svg",
+    "../icons/CherriesIcon.svg",
+    "../icons/BananaIcon.svg",
 ];
 
 //Making new array with pair of each icon
