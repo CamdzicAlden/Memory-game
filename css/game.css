@@ -117,6 +117,11 @@ flipped class*/
   transform: rotateY(180deg);
 }
 
+/*Add animation to cards question marks*/
+.cardFront img{
+    animation: cardCoverScaling 1s linear infinite;
+}
+
 /*Style for cards icons*/
 .card img{
     width: clamp(2rem, 4vw, 20rem);
