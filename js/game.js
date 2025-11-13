@@ -93,6 +93,7 @@ function resetGame(){
 
   displayTime();
   displayMoves();
+  tickSound.pause();
   
   cards.forEach((card) => {
       card.classList.remove("flipped");
