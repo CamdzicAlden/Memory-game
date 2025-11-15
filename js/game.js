@@ -72,7 +72,7 @@ function checkMatch(){
         card2.classList.remove("flipped");
         flippingSound();
         resetBoard();
-      }, 1500);
+      }, 1700);
     }
 }
 

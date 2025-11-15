@@ -1,0 +1,67 @@
+body{
+    font-family: 'Peralta';
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 50% 50%;
+    justify-content: center;
+}
+
+.textContainer{
+    font-size: clamp(1rem, 5vw, 8rem);
+    align-self: flex-end;
+}
+
+.buttons{
+    height: 100%;
+    font-family: 'RobotoBold';
+    font-size: clamp(1rem, 1.7vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.2rem, 3vh, 8rem);
+}
+
+.buttons div{
+    outline: 1px solid #000000;
+    border-radius: 999999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.9;
+    width: clamp(5rem, 15vw, 12rem);
+}
+
+.buttons div:hover{
+    cursor: pointer;
+    background: linear-gradient(#74C0FC, #4098FF);
+    outline: none;
+}
+
+a, a:link, a:hover, a:visited{
+    display: block;
+    position: relative;
+    width: auto;
+    height: auto;
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.homeIcon{
+    position:absolute;
+    width: clamp(2rem, 3vw, 3rem);
+    height: auto;
+    transform: translate(-50%);
+}
+
+.homeIcon img{
+    position: relative;
+    height: auto;
+    width: clamp(2rem, 3vw, 3rem);
+}
+
+.homeIcon a{
+    line-height: 0;
+}
+
