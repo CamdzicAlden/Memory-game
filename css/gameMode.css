@@ -11,6 +11,7 @@ body{
 .textContainer{
     font-size: clamp(1rem, 5vw, 8rem);
     align-self: flex-end;
+    text-shadow: 0 clamp(0.4rem, 0.6vw, 1rem) clamp(0.1rem, 0.4vw, 0.6rem) rgba(0, 0, 0, 0.25);
 }
 
 /*Container for buttons*/
@@ -34,6 +35,7 @@ body{
     align-items: center;
     line-height: 1.9;
     width: clamp(5rem, 15vw, 12rem);
+    transition: transform 0.1s linear;
 }
 
 /*Style for hovering buttons*/
@@ -41,6 +43,7 @@ body{
     cursor: pointer;
     background: linear-gradient(#74C0FC, #4098FF);
     outline: none;
+    transform: scale(1.05);
 }
 
 /*Global style for links on the page*/
@@ -66,9 +69,22 @@ a, a:link, a:hover, a:visited{
     position: relative;
     height: auto;
     width: clamp(2rem, 3vw, 3rem);
+    transition: transform 0.1s linear;
+    animation: none;
+}
+
+.homeIcon img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .homeIcon a{
     line-height: 0;
+}
+
+img{
+    position: absolute;
+    width: clamp(1rem, 2.5vw, 3rem);
+    animation: time 1.5s linear infinite;
 }
 
