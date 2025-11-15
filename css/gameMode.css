@@ -1,3 +1,4 @@
+/*Main body grid*/
 body{
     font-family: 'Peralta';
     display: grid;
@@ -6,11 +7,13 @@ body{
     justify-content: center;
 }
 
+/*Container for text*/
 .textContainer{
     font-size: clamp(1rem, 5vw, 8rem);
     align-self: flex-end;
 }
 
+/*Container for buttons*/
 .buttons{
     height: 100%;
     font-family: 'RobotoBold';
@@ -22,6 +25,7 @@ body{
     gap: clamp(0.2rem, 3vh, 8rem);
 }
 
+/*Style for buttons*/
 .buttons div{
     outline: 1px solid #000000;
     border-radius: 999999px;
@@ -32,12 +36,14 @@ body{
     width: clamp(5rem, 15vw, 12rem);
 }
 
+/*Style for hovering buttons*/
 .buttons div:hover{
     cursor: pointer;
     background: linear-gradient(#74C0FC, #4098FF);
     outline: none;
 }
 
+/*Global style for links on the page*/
 a, a:link, a:hover, a:visited{
     display: block;
     position: relative;
@@ -48,6 +54,7 @@ a, a:link, a:hover, a:visited{
     text-decoration: none;
 }
 
+/*Home icon container*/
 .homeIcon{
     position:absolute;
     width: clamp(2rem, 3vw, 3rem);
