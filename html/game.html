@@ -9,14 +9,27 @@
     <link rel="icon" href="../icons/QuestionmarkIcon.svg">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/modesStyles.css">
     <link rel="stylesheet" href="../css/dialogWindow.css">
   </head>
   <body>
     <header>
-      <!-- Time text -->
+      <!-- Time text for singleplayer mode -->
       <div class="textContainer">
         <p class="textLabel">Time:</p>
         <p id="time">01:30</p>
+      </div>
+
+      <!-- Text for multiplayer mode -->
+      <div class="multiplayerText"> 
+        <div class="player1">
+          <p id="p1" class="redText">PLAYER 1</p>
+          <p id="p1Score">0</p>
+        </div>
+        <div class="player2">
+          <p id="p2">PLAYER 2</p>
+          <p id="p2score">0</p>
+        </div>
       </div>
 
       <!-- Top right icons -->

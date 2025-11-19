@@ -28,17 +28,17 @@
     <!-- Option buttons -->
     <div class="buttons"> 
         <div class="1Player">
-            <a href="./game.html">
+            <a href="./game.html" onclick="setMode('singleplayer')">
               <p>1 Player</p>
             </a>
         </div>
         <div class="2Players">
-            <a href="">
+            <a href="./game.html"  onclick="setMode('multiplayer')">
               <p>2 Players</p>
             </a>
         </div>
         <div class="vsComputer">
-            <a href="">
+            <a href="./game.html"  onclick="setMode('multiplayer')">
               <p>vs Computer</p>
             </a>
         </div>
@@ -58,5 +58,7 @@
     <img src="../icons/QuestionmarkIcon.svg" alt="Q" style="bottom: 23%; right: 20%;">
     <img src="../icons/QuestionmarkIcon.svg" alt="Q" style="bottom: 5%; right: 5%;">
     
+    <script src="../js/gameMode.js">
+    </script>
   </body>
 </html>

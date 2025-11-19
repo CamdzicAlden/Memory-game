@@ -5,10 +5,16 @@ const moves = document.getElementById("moves");
 const dialogWindow = document.querySelector(".dialogWindow");
 const won = document.querySelector(".won");
 const timesUp = document.querySelector(".timesUp");
+const singlePlayerText = document.querySelectorAll(".textContainer");
+const multiplayerText = document.querySelector(".multiplayerText");
+const headerContainer = document.querySelector("header");
+const headerIcons = document.querySelector(".headerIcons");
+const mainGrid = document.querySelector("body");
 const flipSound = new Audio('../sound/Flip.mp3');
 const failSound = new Audio('../sound/Fail.mp3');
 const tickSound = new Audio('../sound/Ticking.mp3');
 const winSound = new Audio('../sound/Won.mp3');
+let gameMode = localStorage.getItem("gameMode");
 
 
 //Array with 8 icon paths
@@ -32,7 +38,10 @@ let lockBoard = false;
 let movesCounter = 0, minutes = 1, seconds = 30, timer = null;
 
 //Event listener for loading shuffled cards on page load
-window.addEventListener('DOMContentLoaded', setCards());
+window.addEventListener('DOMContentLoaded', () => {
+  setMode();
+  setCards();
+});
 
 //Setting click event listener on every card
 cards.forEach(card => {
@@ -160,6 +169,11 @@ function setCards(){
     const img = card.querySelector(".cardBack img");
     img.src = shuffledImages[index];
   })
+}
+
+function setMode(){
+  document.body.classList.remove("singleplayerMode", "multiplayerMode");
+  document.body.classList.add(`${gameMode}Mode`);
 }
 
 //Playing flip sound

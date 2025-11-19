@@ -1,0 +1,43 @@
+/*One player mode*/
+.singleplayerMode .textContainer{
+    display: flex;
+}
+
+.singleplayerMode .multiplayerText{
+    display: none;
+}
+
+.singleplayerMode header{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.singleplayerMode .headerIcons{
+    margin-top: none;
+}
+
+.singleplayerMode{
+    grid-template-rows: 10% 80% 10%;
+}
+
+/*Two players mode*/
+.multiplayerMode .textContainer{
+    display: none;
+}
+
+.multiplayerMode .multiplayerText{
+    display: flex;
+}
+
+.multiplayerMode header{
+    justify-content: right;
+    align-items: flex-start;
+}
+
+.multiplayerMode .headerIcons{
+    margin-top: clamp(0.5rem, 1.5vw, 3rem);
+}
+
+.multiplayerMode{
+    grid-template-rows: 20% 70% 10%;
+}

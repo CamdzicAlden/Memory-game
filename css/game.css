@@ -16,7 +16,7 @@ header{
     margin-right: clamp(0.5rem, 0.8vw, 1rem);
 }
 
-/*Text container used for every text on the page*/
+/*Text container for singleplayer mode*/
 .textContainer{
     width: auto;
     height: auto;
@@ -26,7 +26,34 @@ header{
     gap: clamp(0.4rem, 0.7vw, 2rem);
 }
 
-/*Making labels look bold*/
+/*Text container for multiplayer mode*/
+.multiplayerText{
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1rem, 12vw, 30rem);
+}
+
+/*Separate container for two players*/
+.player1, .player2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.4rem, 0.7vw, 2rem);
+}
+
+/*Player labels*/
+#p1, #p2{
+    font-family: 'Peralta';
+    animation: none;
+}
+
+/*Making singleplayer labels look bold*/
 .textLabel{
     font-family: 'RobotoBold';
 }
