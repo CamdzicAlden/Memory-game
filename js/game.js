@@ -117,6 +117,9 @@ function resetGame(){
   movesCounter = 0;
   p1Score = 0;
   p2Score = 0;
+  wonText.textContent = "WON!";
+  personWon.style.display = "block";
+  personWon.style.fontSize = "clamp(2rem, 4.5vw, 10rem)";
   time.style.color = "#FFFFFF";
 
   displayTime();
@@ -258,19 +261,21 @@ function checkWin(){
 
   if(allFlipped && gameMode === "singleplayer"){
     clearInterval(timer);
-    wonText.textContent = "WON!";
-    personWon.style.display = "block";
+    
     personWon.textContent = "YOU";
     wonMessage();  //Display popup
     wonSound();
   }
   else if(allFlipped && gameMode === "multiplayer"){
+    personWon.style.fontSize = "clamp(2rem, 4vw, 10rem)";
     if(p1Score > p2Score) personWon.textContent = "PLAYER 1";
     else if(p2Score > p1Score) personWon.textContent = "PLAYER 2";
     else{
       personWon.style.display = "none";
       wonText.textContent = "DRAW";
     }
+    console.log(p1Score);
+    console.log(p2Score);
     wonMessage();  //Display popup
     wonSound();
   }
