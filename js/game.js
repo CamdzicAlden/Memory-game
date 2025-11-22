@@ -4,12 +4,13 @@ const time = document.getElementById("time");
 const moves = document.getElementById("moves");
 const dialogWindow = document.querySelector(".dialogWindow");
 const won = document.querySelector(".won");
+const personWon = document.getElementById("personWon");
+const wonText = document.getElementById("wonMessage");
 const timesUp = document.querySelector(".timesUp");
-const singlePlayerText = document.querySelectorAll(".textContainer");
-const multiplayerText = document.querySelector(".multiplayerText");
-const headerContainer = document.querySelector("header");
-const headerIcons = document.querySelector(".headerIcons");
-const mainGrid = document.querySelector("body");
+const player1Label = document.getElementById("p1");
+const player2Label = document.getElementById("p2");
+const player1Score = document.getElementById("p1Score");
+const player2Score = document.getElementById("p2Score");
 const flipSound = new Audio('../sound/Flip.mp3');
 const failSound = new Audio('../sound/Fail.mp3');
 const tickSound = new Audio('../sound/Ticking.mp3');
@@ -34,8 +35,9 @@ const pairedImages = [...cardBackImages, ...cardBackImages];
 
 
 let card1 = null, card2 = null;
-let lockBoard = false;
+let lockBoard = false, turn = false;
 let movesCounter = 0, minutes = 1, seconds = 30, timer = null;
+let p1Score = 0, p2Score = 0;
 
 //Event listener for loading shuffled cards on page load
 window.addEventListener('DOMContentLoaded', () => {
@@ -48,12 +50,17 @@ cards.forEach(card => {
     card.addEventListener('click', () => {
        if(lockBoard) return;
        if(card === card1 || card.classList.contains("flipped")) return;
-
-       if(!timer) timer = setInterval(updateTime, 1000);
+       
+       if(gameMode === "singlePlayer" && !timer){
+         timer = setInterval(updateTime, 1000);
+       }
        flippingSound();
        card.classList.add("flipped");
-       movesCounter++;
-       displayMoves();
+
+       if(gameMode === "singleplayer"){
+         movesCounter++;
+         displayMoves();
+       } 
 
        if(!card1) {
         card1 = card;
@@ -72,6 +79,11 @@ function checkMatch(){
 
     if(img1 === img2){
       resetBoard();  //Leave them flipped if they are
+      if(gameMode === "multiplayer"){
+        if(turn) p2Score++;
+        else p1Score++;
+        displayScore();
+      }
       setTimeout(checkWin, 700);
     }
     else{
@@ -81,6 +93,11 @@ function checkMatch(){
         card2.classList.remove("flipped");
         flippingSound();
         resetBoard();
+        if(gameMode === "multiplayer"){
+          turn = !turn;
+          player1Label.classList.toggle("redText");
+          player2Label.classList.toggle("redText");
+        }
       }, 1700);
     }
 }
@@ -98,10 +115,13 @@ function resetGame(){
   minutes = 1;
   seconds = 30;
   movesCounter = 0;
+  p1Score = 0;
+  p2Score = 0;
   time.style.color = "#FFFFFF";
 
   displayTime();
   displayMoves();
+  displayScore();
   tickSound.pause();
   
   cards.forEach((card) => {
@@ -147,9 +167,14 @@ function displayTime(){
   time.textContent = displayMinutes + displaySeconds;
 }
 
-//Displaying number of moves
+//Displaying number of moves for singleplayer
 function displayMoves(){
   moves.textContent = movesCounter;
+}
+
+function displayScore(){
+  player1Score.textContent = p1Score;
+  player2Score.textContent = p2Score;
 }
 
 //Fisher-Yates algorithm for shuffling array randomly
@@ -171,6 +196,7 @@ function setCards(){
   })
 }
 
+//Function for setting game mode
 function setMode(){
   document.body.classList.remove("singleplayerMode", "multiplayerMode");
   document.body.classList.add(`${gameMode}Mode`);
@@ -230,8 +256,21 @@ function checkWin(){
   //Check if they contain class flipped 
   const allFlipped = [...cards].every(card => card.classList.contains("flipped"));
 
-  if(allFlipped){
+  if(allFlipped && gameMode === "singleplayer"){
     clearInterval(timer);
+    wonText.textContent = "WON!";
+    personWon.style.display = "block";
+    personWon.textContent = "YOU";
+    wonMessage();  //Display popup
+    wonSound();
+  }
+  else if(allFlipped && gameMode === "multiplayer"){
+    if(p1Score > p2Score) personWon.textContent = "PLAYER 1";
+    else if(p2Score > p1Score) personWon.textContent = "PLAYER 2";
+    else{
+      personWon.style.display = "none";
+      wonText.textContent = "DRAW";
+    }
     wonMessage();  //Display popup
     wonSound();
   }
