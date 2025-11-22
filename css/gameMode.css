@@ -9,16 +9,16 @@ body{
 
 /*Container for text*/
 .textContainer{
-    font-size: clamp(1rem, 6vw, 8rem);
+    font-size: clamp(3.5rem, 6vw, 8rem);
     align-self: flex-end;
-    text-shadow: 0 clamp(0.4rem, 0.6vw, 1rem) clamp(0.1rem, 0.4vw, 0.6rem) rgba(0, 0, 0, 0.25);
+    text-shadow: 0 clamp(0.3rem, 0.6vw, 1rem) clamp(0.1rem, 0.4vw, 0.6rem) rgba(0, 0, 0, 0.25);
 }
 
 /*Container for buttons*/
 .buttons{
     height: 100%;
     font-family: 'RobotoBold';
-    font-size: clamp(1rem, 1.7vw, 1.5rem);
+    font-size: clamp(1.2rem, 1.7vw, 1.5rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,7 +34,7 @@ body{
     justify-content: center;
     align-items: center;
     line-height: 1.9;
-    width: clamp(5rem, 15vw, 12rem);
+    width: clamp(8rem, 15vw, 12rem);
     transition: transform 0.1s linear;
 }
 
@@ -84,7 +84,7 @@ a, a:link, a:hover, a:visited{
 
 img{
     position: absolute;
-    width: clamp(1rem, 2.5vw, 3rem);
+    width: clamp(1.2rem, 2.5vw, 3rem);
     animation: time 1.5s linear infinite;
 }
 

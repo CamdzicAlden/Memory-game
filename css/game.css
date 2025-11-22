@@ -34,6 +34,7 @@ header{
     transform: translate(-50%);
     display: none;
     justify-content: center;
+    white-space: nowrap;
     align-items: center;
     gap: clamp(1rem, 12vw, 30rem);
 }
@@ -183,4 +184,11 @@ footer{
   justify-content: flex-end;
   align-items: center;
   margin-right: clamp(0.5rem, 0.8vw, 1rem);
+}
+
+/*Style for phone screen*/
+@media screen and (max-width: 600px){
+  .multiplayerText{
+    top: 15%;
+  }
 }

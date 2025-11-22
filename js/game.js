@@ -51,7 +51,7 @@ cards.forEach(card => {
        if(lockBoard) return;
        if(card === card1 || card.classList.contains("flipped")) return;
        
-       if(gameMode === "singlePlayer" && !timer){
+       if(gameMode === "singleplayer" && !timer){
          timer = setInterval(updateTime, 1000);
        }
        flippingSound();
@@ -267,7 +267,7 @@ function checkWin(){
     wonSound();
   }
   else if(allFlipped && gameMode === "multiplayer"){
-    personWon.style.fontSize = "clamp(2rem, 4vw, 10rem)";
+    personWon.style.fontSize = "clamp(1.5rem, 4vw, 10rem)";
     if(p1Score > p2Score) personWon.textContent = "PLAYER 1";
     else if(p2Score > p1Score) personWon.textContent = "PLAYER 2";
     else{
