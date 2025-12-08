@@ -34,7 +34,7 @@ body{
     justify-content: center;
     align-items: center;
     line-height: 1.9;
-    width: clamp(8rem, 15vw, 12rem);
+    width: clamp(8.5rem, 15vw, 12rem);
     transition: transform 0.1s linear;
 }
 
