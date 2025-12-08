@@ -1,10 +1,10 @@
 let computerMemory = [];
-let memoryLimit = 4;
+let memoryLimit = 6;
 let computerThinkingTimeout = null;
 
 
 function computerPlay(){
-    const forgetChance = 0.08;
+    const forgetChance = 0.05;
     //18 percent chance for computer to forget card from memory
     if(Math.random() < forgetChance && computerMemory.length > 0){
         const idx = Math.floor(Math.random() * computerMemory.length);
