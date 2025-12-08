@@ -11,6 +11,12 @@ const player1Label = document.getElementById("p1");
 const player2Label = document.getElementById("p2");
 const player1Score = document.getElementById("p1Score");
 const player2Score = document.getElementById("p2Score");
+const playerLabel = document.getElementById("pl");
+const computerLabel = document.getElementById("comp");
+const player = document.getElementById("player");
+const computer = document.getElementById("computer");
+const playerScore = document.getElementById("playerScore");
+const computerScore = document.getElementById("computerScore");
 const flipSound = new Audio('../sound/Flip.mp3');
 const failSound = new Audio('../sound/Fail.mp3');
 const tickSound = new Audio('../sound/Ticking.mp3');
@@ -37,7 +43,7 @@ const pairedImages = [...cardBackImages, ...cardBackImages];
 let card1 = null, card2 = null;
 let lockBoard = false, turn = false;
 let movesCounter = 0, minutes = 1, seconds = 30, timer = null;
-let p1Score = 0, p2Score = 0;
+let p1Score = 0, p2Score = 0, plScore = 0; compScore = 0;
 
 //Event listener for loading shuffled cards on page load
 window.addEventListener('DOMContentLoaded', () => {
@@ -82,8 +88,11 @@ function checkMatch(){
       if(gameMode === "multiplayer"){
         if(turn) p2Score++;
         else p1Score++;
-        displayScore();
+      }else if(gameMode === "computer"){
+        if(turn) compScore++;
+        else plScore++;
       }
+      displayScore();
       setTimeout(checkWin, 700);
     }
     else{
@@ -97,6 +106,12 @@ function checkMatch(){
           turn = !turn;
           player1Label.classList.toggle("redText");
           player2Label.classList.toggle("redText");
+        }else if(gameMode === "computer"){
+          turn = !turn;
+          if(!turn) lockBoard = false;
+          else startComputerTurn();
+          playerLabel.classList.toggle("redText");
+          computerLabel.classList.toggle("redText");
         }
       }, 1700);
     }
@@ -117,6 +132,8 @@ function resetGame(){
   movesCounter = 0;
   p1Score = 0;
   p2Score = 0;
+  plScore = 0;
+  compScore = 0;
   wonText.textContent = "WON!";
   personWon.style.display = "block";
   personWon.style.fontSize = "clamp(2rem, 4.5vw, 10rem)";
@@ -155,6 +172,7 @@ function updateTime(){
   else if(minutes === 0 && seconds === 0) {
     clearInterval(timer);
     timesUpMessage();  //Show time's up popup
+    tickSound.pause();
     failureSound();
   }
 }
@@ -176,8 +194,13 @@ function displayMoves(){
 }
 
 function displayScore(){
-  player1Score.textContent = p1Score;
-  player2Score.textContent = p2Score;
+  if(gameMode === "multiplayer"){
+    player1Score.textContent = p1Score;
+    player2Score.textContent = p2Score;
+  }else if(gameMode === "computer"){
+    playerScore.textContent = plScore;
+    computerScore.textContent = compScore;
+  }
 }
 
 //Fisher-Yates algorithm for shuffling array randomly
@@ -201,7 +224,7 @@ function setCards(){
 
 //Function for setting game mode
 function setMode(){
-  document.body.classList.remove("singleplayerMode", "multiplayerMode");
+  document.body.classList.remove("singleplayerMode", "multiplayerMode", "computerMode");
   document.body.classList.add(`${gameMode}Mode`);
 }
 
@@ -261,7 +284,6 @@ function checkWin(){
 
   if(allFlipped && gameMode === "singleplayer"){
     clearInterval(timer);
-    
     personWon.textContent = "YOU";
     wonMessage();  //Display popup
     wonSound();
@@ -274,9 +296,19 @@ function checkWin(){
       personWon.style.display = "none";
       wonText.textContent = "DRAW";
     }
-    console.log(p1Score);
-    console.log(p2Score);
     wonMessage();  //Display popup
     wonSound();
   }
+  else if(allFlipped && gameMode === "computer"){
+    personWon.style.fontSize = "clamp(1.5rem, 4vw, 10rem)";
+    if(plScore > compScore) personWon.textContent = "PLAYER";
+    else if(compScore > plScore) personWon.textContent = "COMPUTER";
+    else{
+      personWon.style.display = "none";
+      wonText.textContent = "DRAW";
+    }
+    wonMessage();  //Display popup
+    wonSound();
+  }
+
 }

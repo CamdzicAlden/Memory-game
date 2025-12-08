@@ -32,9 +32,21 @@
         </div>
       </div>
 
+       <!-- Text for multiplayer mode -->
+      <div class="vsComputerText"> 
+        <div class="player">
+          <p id="pl"class="redText">PLAYER</p>
+          <p id="playerScore">0</p>
+        </div>
+        <div class="computer">
+          <p id="comp">COMPUTER</p>
+          <p id="computerScore">0</p>
+        </div>
+      </div>
+
       <!-- Top right icons -->
       <div class="headerIcons"> 
-        <button onclick="resetGame()">
+        <button onclick="resetGame(); clearComputerMemory();">
           <img src="../icons/RestartIcon.svg" alt="R">
         </button>
         <a href="../index.html">
@@ -255,7 +267,7 @@
           <p id="personWon">YOU</p>
           <p id="wonMessage" class="redText">WON!</p>
         </div>
-        <button class="okButton" onclick="wonOK()">OK</button>
+        <button class="okButton" onclick="wonOK(); clearComputerMemory();">OK</button>
 
         <img src="../icons/IdeaBulbIcon.svg" alt="B" style="top: 10%; left: 10%;">
         <img src="../icons/IdeaBulbIcon.svg" alt="B" style="top: 10%; left: 35%;">
@@ -289,5 +301,6 @@
     </div>
 
     <script src="../js/game.js"></script>
+    <script src="../js/computer.js"></script>
   </body>
 </html>

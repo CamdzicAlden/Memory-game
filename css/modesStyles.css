@@ -3,7 +3,7 @@
     display: flex;
 }
 
-.singleplayerMode .multiplayerText{
+.singleplayerMode .multiplayerText, .singleplayerMode .vsComputerText{
     display: none;
 }
 
@@ -21,7 +21,7 @@
 }
 
 /*Two players mode*/
-.multiplayerMode .textContainer{
+.multiplayerMode .textContainer, .multiplayerMode .vsComputerText{
     display: none;
 }
 
@@ -39,5 +39,27 @@
 }
 
 .multiplayerMode{
+    grid-template-rows: 20% 70% 10%;
+}
+
+/*Vs computer text*/
+.computerMode .textContainer, .computerMode .multiplayerText{
+    display: none;
+}
+
+.computerMode .vsComputerText{
+    display: flex;
+}
+
+.computerMode header{
+    justify-content: right;
+    align-items: flex-start;
+}
+
+.computerMode .headerIcons{
+    margin-top: clamp(0.5rem, 1.5vw, 3rem);
+}
+
+.computerMode{
     grid-template-rows: 20% 70% 10%;
 }

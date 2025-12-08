@@ -27,7 +27,7 @@ header{
 }
 
 /*Text container for multiplayer mode*/
-.multiplayerText{
+.multiplayerText, .vsComputerText{
     position: absolute;
     top: 2%;
     left: 50%;
@@ -36,11 +36,15 @@ header{
     justify-content: center;
     white-space: nowrap;
     align-items: center;
-    gap: clamp(1rem, 12vw, 30rem);
+    gap: clamp(1rem, 10vw, 30rem);
+}
+
+.vsComputerText{
+    transform: translate(-48%);
 }
 
 /*Separate container for two players*/
-.player1, .player2{
+.player1, .player2, .player, .computer{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +53,7 @@ header{
 }
 
 /*Player labels*/
-#p1, #p2{
+#p1, #p2, #pl, #comp{
     font-family: 'Peralta';
     animation: none;
 }
@@ -188,7 +192,7 @@ footer{
 
 /*Style for phone screen*/
 @media screen and (max-width: 600px){
-  .multiplayerText{
+  .multiplayerText, .vsComputerText{
     top: 15%;
   }
 }
