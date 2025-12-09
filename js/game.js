@@ -139,9 +139,15 @@ function resetGame(){
   p2Score = 0;
   plScore = 0;
   compScore = 0;
+  turn = false;
+  lockBoard = false;
   wonText.textContent = "WON!";
   personWon.style.display = "block";
   personWon.style.fontSize = "clamp(2rem, 4.5vw, 10rem)";
+  player1Label.classList.add("redText");
+  playerLabel.classList.add("redText");
+  player2Label.classList.remove("redText");
+  computerLabel.classList.remove("redText");
   time.style.color = "#FFFFFF";
 
   displayTime();
