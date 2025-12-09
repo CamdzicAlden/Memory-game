@@ -108,6 +108,8 @@ main{
 
 /*Style for memory card container*/
 .card{
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
     width: clamp(5.5rem, 10vw, 20rem);
     height: clamp(5.5rem, 10vw, 20rem);
     border-radius: clamp(1.3rem, 2vw, 10rem);
@@ -121,6 +123,7 @@ main{
     height: 100%;
     transition: transform 0.7s ease, box-shadow 0.1s ease-in-out;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     border-radius: inherit;
     box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
 }
@@ -137,6 +140,7 @@ flipped class*/
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,7 +150,13 @@ flipped class*/
 
 /*Flip cards back initially to hide it*/
 .cardBack{
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
+  -webkit-transform: rotateY(180deg) translateZ(1px);
+}
+
+.cardFront{
+    transform: rotateY(0deg) translateZ(1px);
+    -webkit-transform: rotateY(0deg) translateZ(1px);
 }
 
 /*Add animation to cards question marks*/
@@ -195,4 +205,8 @@ footer{
   .multiplayerText, .vsComputerText{
     top: 15%;
   }
+}
+
+.cardInner{
+    will-change: transform;
 }
