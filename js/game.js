@@ -44,6 +44,9 @@ let card1 = null, card2 = null;
 let lockBoard = false, turn = false;
 let movesCounter = 0, minutes = 1, seconds = 30, timer = null;
 let p1Score = 0, p2Score = 0, plScore = 0; compScore = 0;
+let computerMemory = [];
+let memoryLimit = 5;
+let computerThinkingTimeout = null;
 
 //Event listener for loading shuffled cards on page load
 window.addEventListener('DOMContentLoaded', () => {
@@ -75,6 +78,8 @@ cards.forEach(card => {
         card2 = card;
         checkMatch();
        }
+       
+       if(gameMode === "computer") rememberCard(card);
     });
 });
 
@@ -113,14 +118,14 @@ function checkMatch(){
           playerLabel.classList.toggle("redText");
           computerLabel.classList.toggle("redText");
         }
-      }, 1700);
+      }, ((gameMode === "computer" && turn) ? 800 : 1700));
     }
 }
 
 //Reseting board values
 function resetBoard(){
     [card1, card2] = [null, null];
-    lockBoard = false;
+    if(gameMode !== "computer" && !turn) lockBoard = false;
 }
 
 //Function for reseting game
@@ -142,6 +147,7 @@ function resetGame(){
   displayTime();
   displayMoves();
   displayScore();
+  clearComputerMemory();
   tickSound.pause();
   
   cards.forEach((card) => {
@@ -311,4 +317,134 @@ function checkWin(){
     wonSound();
   }
 
+}
+
+function computerPlay(){
+    const forgetChance = 0.05;
+    //18 percent chance for computer to forget card from memory
+    if(Math.random() < forgetChance && computerMemory.length > 0){
+        const idx = Math.floor(Math.random() * computerMemory.length);
+        computerMemory.splice(idx, 1);
+    }
+
+    let knownPair = findKnownPair();
+
+    if(knownPair){
+        const [cA, cB] = knownPair;
+        flipComputerCard(cA);
+        setTimeout(() => {
+            flipComputerCard(cB);
+            setTimeout(() => {
+                checkMatch();
+                  setTimeout(() => {
+                    if(turn){
+                      const nextDelay = 600 + Math.random() * 900;
+                      computerThinkingTimeout = setTimeout(computerPlay, nextDelay);
+                    }
+                  }, 750);
+            }, 750);
+        }, 700);
+    }else{
+        const first = getRandomUnflippedCard();
+        if(!first){
+            lockBoard = false;
+            return;
+        }
+        flipComputerCard(first);
+
+        setTimeout(() => {
+            const firstImg = first.querySelector(".cardBack img").src;
+            const memoryMatch = 
+            computerMemory.find(e => e.img === firstImg && e.card !== first && 
+            !e.card.classList.contains("flipped"));
+
+            let second;
+            if(memoryMatch) second = memoryMatch.card;
+            else second = getRandomUnflippedCard(first);
+
+            if(!second){
+                lockBoard = false;
+                return;
+            }
+            flipComputerCard(second);
+
+            setTimeout(() => {
+                checkMatch();
+                setTimeout(() => {
+                  if(turn){
+                    const nextDelay = 700 + Math.random() * 900;
+                    computerThinkingTimeout = setTimeout(computerPlay, nextDelay);
+                  }
+                }, 800);
+            }, 750);
+        }, 700);
+    }
+}
+
+//Method for searching for a pair in memory
+function findKnownPair(){
+    purgeMatchedFromMemory();
+    for(let i = 0; i < computerMemory.length; i++){
+        for(let j = i+1; j < computerMemory.length; j++){
+            if(computerMemory[i].img === computerMemory[j].img)
+                return [computerMemory[i].card, computerMemory[j].card];
+        }
+    }
+    return null;
+}
+
+//Method for removing matched cards from memory
+function purgeMatchedFromMemory(){
+    computerMemory = computerMemory.filter(e => !e.card.classList.contains("flipped"));
+}
+
+//Method for flipping card programatically
+function flipComputerCard(card){
+    if(!card || card.classList.contains("flipped")) return;
+    flippingSound();
+    card.classList.add("flipped");
+
+    if(!card1){
+        card1 = card;
+    }else if(!card2 && card !== card1){
+        card2 = card;
+    }
+
+    rememberCard(card);
+}
+
+//Method for storing flipped cards in memory
+function rememberCard(card){
+    const img = card.querySelector(".cardBack img").src;
+    if(computerMemory.some(e => e.card === card)) return;
+    computerMemory.push({card, img});
+    if(computerMemory.length > memoryLimit) computerMemory.shift();
+}
+
+//Method for randomly flipping card
+function getRandomUnflippedCard(excludeCard){
+    const unflipped = 
+    [...cards].filter(c => !c.classList.contains("flipped") && c !== excludeCard);
+    
+    if(unflipped.length === 0) return null;
+    return unflipped[Math.floor(Math.random() * unflipped.length)];
+}
+
+//Method for reseting computer memory
+function clearComputerMemory(){
+    computerMemory = [];
+    if(computerThinkingTimeout){
+        clearTimeout(computerThinkingTimeout);
+        computerThinkingTimeout = null;
+    }
+}
+
+//Method for starting computer play
+function startComputerTurn(){
+    lockBoard = true;
+    const thinkTime = 800 + Math.random() * 1200;
+    computerThinkingTimeout = setTimeout(() => {
+        computerThinkingTimeout = null;
+        computerPlay();
+    }, thinkTime);
 }
