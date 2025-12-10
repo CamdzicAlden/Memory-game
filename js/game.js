@@ -125,7 +125,8 @@ function checkMatch(){
 //Reseting board values
 function resetBoard(){
     [card1, card2] = [null, null];
-    if(gameMode !== "computer" && !turn) lockBoard = false;
+    if(gameMode == "computer" && turn) lockBoard = true;
+    else lockBoard = false;
 }
 
 //Function for reseting game
