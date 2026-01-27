@@ -1,26 +1,27 @@
 /*Making body a flex container*/
-body{
-  font-family: 'Peralta';
-  position: relative; 
+body {
+  font-family: "Peralta";
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 /*Container for text in the middle*/
-.logoText{
+.logoText {
   opacity: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: clamp(4rem, 8vw, 8rem);
-  text-shadow: 0 clamp(0.4rem, 0.9vw, 3rem) clamp(0.4rem, 0.5vw, 10rem) rgba(0, 0, 0, 0.25);
+  text-shadow: 0 clamp(0.4rem, 0.9vw, 3rem) clamp(0.4rem, 0.5vw, 10rem)
+    rgba(0, 0, 0, 0.25);
   animation: logoAnimation 0.7s linear 0.5s 1 forwards;
 }
 
 /*Style for links*/
-a{
+a {
   display: inline-block;
   width: auto;
   height: auto;
@@ -30,15 +31,16 @@ a{
 }
 
 /*Play button container*/
-#playButton{
+#playButton {
   position: absolute;
+  display: flex;
   bottom: 10%;
   left: 50%;
   transform: translate(-50%);
 }
 
 /*Play button image*/
-#playButtonImg{
+#playButtonImg {
   display: block;
   position: relative;
   width: clamp(5rem, 7vw, 8rem);
@@ -46,25 +48,25 @@ a{
   animation: playBtnRotate 1.5s linear 4s infinite;
 }
 
-#playButtonImg:hover{
+#playButtonImg:hover {
   animation: none;
 }
 
 /*Other images*/
-img{
-    position: absolute;
-    width: clamp(1.5rem, 2.5vw, 3rem);
-    animation: scaling 0.7s infinite linear;
+img {
+  position: absolute;
+  width: clamp(1.5rem, 2.5vw, 3rem);
+  animation: scaling 0.7s infinite linear;
 }
 
 /*Style for phone screen*/
-@media screen and (max-width: 600px){
-  #movingIconLeft{
+@media screen and (max-width: 600px) {
+  #movingIconLeft {
     top: 25% !important;
     left: 48% !important;
   }
 
-  #movingIconRight{
+  #movingIconRight {
     display: none;
   }
 }
