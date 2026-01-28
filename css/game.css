@@ -1,199 +1,210 @@
 /*Making body a grid container*/
-body{
-    font-family: 'Roboto';
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 10% 80% 10%;
+body {
+  font-family: "Roboto";
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 10% 80% 10%;
 }
 
 /*Header flex container*/
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: clamp(0.5rem, 0.8vw, 1rem);
-    margin-right: clamp(0.5rem, 0.8vw, 1rem);
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: clamp(0.5rem, 0.8vw, 1rem);
+  margin-right: clamp(0.5rem, 0.8vw, 1rem);
 }
 
 /*Text container for singleplayer mode*/
-.textContainer{
-    width: auto;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: clamp(0.4rem, 0.7vw, 2rem);
+.textContainer {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.4rem, 0.7vw, 2rem);
 }
 
 /*Text container for multiplayer mode*/
-.multiplayerText, .vsComputerText{
-    position: absolute;
-    top: 2%;
-    left: 50%;
-    transform: translate(-50%);
-    display: none;
-    justify-content: center;
-    white-space: nowrap;
-    align-items: center;
-    gap: clamp(1rem, 10vw, 30rem);
+.multiplayerText,
+.vsComputerText {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%);
+  display: none;
+  justify-content: center;
+  white-space: nowrap;
+  align-items: center;
+  gap: clamp(1rem, 10vw, 30rem);
 }
 
-.vsComputerText{
-    transform: translate(-48%);
+.vsComputerText {
+  transform: translate(-48%);
 }
 
 /*Separate container for two players*/
-.player1, .player2, .player, .computer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: clamp(0.4rem, 0.7vw, 2rem);
+.player1,
+.player2,
+.player,
+.computer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.4rem, 0.7vw, 2rem);
 }
 
 /*Player labels*/
-#p1, #p2, #pl, #comp{
-    font-family: 'Peralta';
-    animation: none;
+#p1,
+#p2,
+#pl,
+#comp {
+  font-family: "Peralta";
+  animation: none;
 }
 
 /*Making singleplayer labels look bold*/
-.textLabel{
-    font-family: 'RobotoBold';
+.textLabel {
+  font-family: "RobotoBold";
 }
 
 /*Container for header icons*/
-.headerIcons{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: clamp(2rem, 3vw, 4rem);
+.headerIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(2rem, 3vw, 4rem);
 }
 
 /*Making buttons and links invisible*/
-.headerIcons button, .headerIcons a{
-    width: auto;
-    height: auto;
-    background-color: transparent;
-    border: none;
-    line-height: 0;
+.headerIcons button,
+.headerIcons a {
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  border: none;
+  line-height: 0;
 }
 
 /*Style for header icons images*/
-.headerIcons img{
-    width: clamp(2rem, 3vw, 3rem);
-    height: auto;
-    transition: transform 0.1s linear;
+.headerIcons img {
+  width: clamp(2rem, 3vw, 3rem);
+  height: auto;
+  transition: transform 0.1s linear;
 }
 
-.headerIcons img:hover{
-    cursor: pointer;
-    transform: scale(1.1);
+.headerIcons img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 /*Main grid with cards*/
-main{
-    width: auto;
-    height: auto;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto auto auto;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    justify-self: center;
-    gap: clamp(0.3rem, 0.5vw, 2rem);
+main {
+  width: auto;
+  height: auto;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  gap: clamp(0.3rem, 0.5vw, 2rem);
 }
 
 /*Style for memory card container*/
-.card{
-    perspective: 1000px;
-    -webkit-perspective: 1000px;
-    width: clamp(5.5rem, 10vw, 20rem);
-    height: clamp(5.5rem, 10vw, 20rem);
-    border-radius: clamp(1.3rem, 2vw, 10rem);
-    transition: transform 0.1s linear;
+.card {
+  perspective: 500px;
+  -webkit-perspective: 1000px;
+  width: clamp(5.5rem, 10vw, 20rem);
+  height: clamp(5.5rem, 10vw, 20rem);
+  border-radius: clamp(1.3rem, 2vw, 10rem);
+  transition: transform 0.1s linear;
 }
 
 /*Flipping part*/
-.cardInner{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.7s ease, box-shadow 0.1s ease-in-out;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    border-radius: inherit;
-    box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition:
+    transform 0.7s ease,
+    box-shadow 0.1s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  border-radius: inherit;
+  box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
 }
 
 /*Flip inner card if container has 
 flipped class*/
-.card.flipped .cardInner{
-    transform: rotateY(180deg);
+.card.flipped .cardInner {
+  transform: rotateY(180deg);
 }
 
 /*Style for back and front of card*/
-.cardFront, .cardBack{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: inherit;
-    background: linear-gradient(#74C0FC, #4098FF);
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: inherit;
+  background: linear-gradient(#74c0fc, #4098ff);
 }
 
 /*Flip cards back initially to hide it*/
-.cardBack{
+.cardBack {
   transform: rotateY(180deg) translateZ(1px);
   -webkit-transform: rotateY(180deg) translateZ(1px);
 }
 
-.cardFront{
-    transform: rotateY(0deg) translateZ(1px);
-    -webkit-transform: rotateY(0deg) translateZ(1px);
+.cardFront {
+  transform: rotateY(0deg) translateZ(1px);
+  -webkit-transform: rotateY(0deg) translateZ(1px);
 }
 
 /*Add animation to cards question marks*/
-.cardFront img{
-    animation: cardCoverScaling 1s linear infinite;
+.cardFront img {
+  animation: cardCoverScaling 1s linear infinite;
 }
 
 /*Style for cards icons*/
-.card img{
-    width: clamp(2rem, 4vw, 20rem);
-    height: auto;
+.card img {
+  width: clamp(2rem, 4vw, 20rem);
+  height: auto;
 }
 
 /*Style for container hovering*/
-.card:hover{
-    cursor: pointer;
-    transform: scale(0.98);
+.card:hover {
+  cursor: pointer;
+  transform: scale(0.98);
 }
 
 /*Remove hover effect if card is flipped*/
-.card.flipped:hover{
-    cursor: default;
-    transform: scale(1);
+.card.flipped:hover {
+  cursor: default;
+  transform: scale(1);
 }
 
 /*Style for inner card hovering*/
-.cardInner:hover{
+.cardInner:hover {
   box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.2);
 }
 
 /*Remove hover effect if card is flipped*/
-.card.flipped .cardInner:hover{
-    box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
+.card.flipped .cardInner:hover {
+  box-shadow: 0 1vh 0.5vh rgba(0, 0, 0, 0.2);
 }
 
 /*Footer flex container*/
-footer{
+footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -201,12 +212,13 @@ footer{
 }
 
 /*Style for phone screen*/
-@media screen and (max-width: 600px){
-  .multiplayerText, .vsComputerText{
+@media screen and (max-width: 600px) {
+  .multiplayerText,
+  .vsComputerText {
     top: 15%;
   }
 }
 
-.cardInner{
-    will-change: transform;
+.cardInner {
+  will-change: transform;
 }
