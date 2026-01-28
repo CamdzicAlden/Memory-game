@@ -1,8 +1,10 @@
 # 🧠 Memory Game
 
-![GitHub repo size](https://img.shields.io/github/repo-size/camdzicalden/Memory-game)
-![GitHub license](https://img.shields.io/github/license/camdzicalden/Memory-game)
-![GitHub stars](https://img.shields.io/github/stars/camdzicalden/Memory-game?style=social)
+<p align="center">
+  <img src="https://img.shields.io/github/repo-size/camdzicalden/Memory-game" alt="Repo size">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
+  <img src="https://img.shields.io/github/stars/camdzicalden/Memory-game?style=social" alt="Stars">
+</p>
 
 A fun and interactive memory matching game built with **HTML, CSS, and JavaScript**! <br>
 Challenge yourself or compete with friends and see who has the sharpest memory. <br>
