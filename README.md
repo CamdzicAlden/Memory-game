@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/github/repo-size/camdzicalden/Memory-game" alt="Repo size">
-  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
+  <img src="https://img.shields.io/badge/License-Educational%20Only-red.svg" alt="License">
   <img src="https://img.shields.io/github/stars/camdzicalden/Memory-game?style=social" alt="Stars">
 </p>
 
@@ -79,7 +79,7 @@ Play in single-player, two-player, or vs computer mode—all in a clean, modern 
 <br>
 <p align="center">
     <img src="./resources/vsComputer.png" alt="2Player" height="400">
-    <br><i>2 Players</i>
+    <br><i>Vs Computer</i>
 </p>
 <br>
 
